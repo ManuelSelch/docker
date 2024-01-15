@@ -1,0 +1,36 @@
+version: "3.3"
+services:
+  bookstack:
+    image: linuxserver/bookstack
+    container_name: bookstack
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - APP_URL=https://wiki.manuelselch.de
+      - DB_HOST=bookstack-db
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASS=root
+      - DB_DATABASE=bookstackapp
+    volumes:
+      - /home/autobot/docker/bookstack/files:/config
+    ports:
+      - 6875:80
+    restart: unless-stopped
+    depends_on:
+      - bookstack-db
+
+  bookstack-db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+
+  
