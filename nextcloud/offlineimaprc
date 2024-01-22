@@ -1,0 +1,19 @@
+[general]
+accounts = Rocketbook
+
+[Account Rocketbook]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = /root/nextcloud/mails
+
+[Repository Remote]
+type = IMAP
+remotehost = imap.strato.de
+remoteuser = paper@manuelselch.de
+remotepass = 1Ter6esai#Qabc
+# remotepassfile = ~/.imappassword
+
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
