@@ -22,6 +22,6 @@ echo "start moving files"
 find . -type f ! -name '*.pdf' -delete
 docker cp $TMP/. $CONTAINER:$NOTES
 rm -rf /tmp/rocketbook
-chown -R www-data:www-data $DESTINATION
+docker exec nextcloud-app su -s /bin/bash -c "chown -R www-data:www-data $NOTES"
 docker exec --user www-data nextcloud-app /var/www/html/occ files:scan manuel
 offlineimap
