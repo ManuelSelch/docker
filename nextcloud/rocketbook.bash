@@ -20,7 +20,7 @@ done
 echo "start moving files"
 #rm ./*.desc
 find . -type f ! -name '*.pdf' -delete
-docker cp $TMP/. $CONTAINER:$PROCESSEDDIR
+docker cp $TMP/. $CONTAINER:$NOTES
 rm -rf /tmp/rocketbook
 chown -R www-data:www-data $DESTINATION
 docker exec --user www-data nextcloud-app /var/www/html/occ files:scan manuel
