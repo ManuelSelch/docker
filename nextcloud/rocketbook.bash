@@ -2,7 +2,7 @@
 TMP=/tmp/rocketbook
 MAILDIR=/root/nextcloud/mails/INBOX/cur
 PROCESSEDDIR=/root/nextcloud/mails/Processed/cur
-CONTAINER=10199f82490a# nextcloud-app container id
+CONTAINER=10199f82490a # nextcloud-app container id
 NOTES=/var/www/html/data/manuel/files/Obsidian/handwritten-notes
 
 offlineimap
