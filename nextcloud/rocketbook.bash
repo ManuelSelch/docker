@@ -1,23 +1,26 @@
 !/bin/bash
+TMP=/tmp/rocketbook
 MAILDIR=/root/nextcloud/mails/INBOX/cur
-DESTINATION=/root/nextcloud/nextcloud/data/manuel/files/Obsidian/handwritten-notes
+PROCESSEDDIR=/root/nextcloud/mails/Processed/cur
+CONTAINER=10199f82490a# nextcloud-app container id
+NOTES=/var/www/html/data/manuel/files/Obsidian/handwritten-notes
 
 offlineimap
-mkdir /tmp/rocketbook
-cd /tmp/rocketbook
+mkdir $TMP
+cd $TMP
 echo "start unpacking files"
 for i in `ls $MAILDIR`
 do
     echo $i
     munpack -tf $MAILDIR/$i
     # munpack -t -C /tmp/rocketbook < "$MAILDIR/$i"
-    rm $MAILDIR/$i
+    mv $MAILDIR/$i $PROCESSEDDIR/$i
 
 done
 echo "start moving files"
 #rm ./*.desc
 find . -type f ! -name '*.pdf' -delete
-cp ./* $DESTINATION
+docker cp $TMP/. $CONTAINER:$PROCESSEDDIR
 rm -rf /tmp/rocketbook
 chown -R www-data:www-data $DESTINATION
 docker exec --user www-data nextcloud-app /var/www/html/occ files:scan manuel
