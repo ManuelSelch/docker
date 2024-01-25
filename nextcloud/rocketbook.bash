@@ -1,6 +1,6 @@
 !/bin/bash
 TMP=/tmp/rocketbook
-MAILDIR=/root/nextcloud/mails/INBOX/cur
+MAILDIR=/root/nextcloud/mails/INBOX/new
 PROCESSEDDIR=/root/nextcloud/mails/Processed/cur
 CONTAINER=10199f82490a # nextcloud-app container id
 NOTES=/var/www/html/data/manuel/files/Obsidian/handwritten-notes
