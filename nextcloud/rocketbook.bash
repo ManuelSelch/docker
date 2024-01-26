@@ -3,6 +3,7 @@ TMP=/tmp/rocketbook
 MAILDIR=/root/nextcloud/mails/INBOX/new
 PROCESSEDDIR=/root/nextcloud/mails/Processed/cur
 CONTAINER=10199f82490a # nextcloud-app container id
+NAME=nextcloud-app
 NOTES=/var/www/html/data/manuel/files/Obsidian/handwritten-notes
 
 offlineimap
@@ -20,8 +21,8 @@ done
 echo "start moving files"
 #rm ./*.desc
 find . -type f ! -name '*.pdf' -delete
-docker cp $TMP/. $CONTAINER:$NOTES
+docker cp $TMP/. $NAME:$NOTES
 rm -rf /tmp/rocketbook
-docker exec nextcloud-app su -s /bin/bash -c "chown -R www-data:www-data $NOTES"
-docker exec --user www-data nextcloud-app /var/www/html/occ files:scan manuel
+docker exec $NAME su -s /bin/bash -c "chown -R www-data:www-data $NOTES"
+docker exec --user www-data $NAME /var/www/html/occ files:scan manuel
 offlineimap
