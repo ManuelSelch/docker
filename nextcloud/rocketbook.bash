@@ -20,7 +20,7 @@ do
 done
 echo "start moving files"
 #rm ./*.desc
-find . -type f ! -name '*.pdf' -delete
+find $TMP -type f ! -name '*.pdf' -delete
 docker cp $TMP/. $NAME:$NOTES
 rm -rf /tmp/rocketbook
 docker exec $NAME su -s /bin/bash -c "chown -R www-data:www-data $NOTES"
