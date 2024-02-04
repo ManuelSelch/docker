@@ -4,6 +4,7 @@ MAILDIR=/root/nextcloud/mails/INBOX/new
 PROCESSEDDIR=/root/nextcloud/mails/Processed/cur
 NAME=nextcloud-app
 NOTES=/var/www/html/data/manuel/files/Obsidian/handwritten-notes
+SCAN_PATH=/manuel/files/Obsidian/handwritten-notes
 
 offlineimap
 mkdir $TMP
@@ -24,5 +25,5 @@ docker cp $TMP/. $NAME:$NOTES
 rm -rf /tmp/rocketbook
 docker exec $NAME su -s /bin/bash -c "chown -R www-data:www-data $NOTES"
 # docker exec --user www-data $NAME /var/www/html/occ files:scan manuel
-docker exec --user www-data $NAME /var/www/html/occ files:scan --path="$NOTES"
+docker exec --user www-data $NAME /var/www/html/occ files:scan --path="$SCAN_PATH"
 offlineimap
