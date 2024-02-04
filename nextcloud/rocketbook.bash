@@ -23,5 +23,6 @@ find $TMP -type f ! -name '*.pdf' -delete
 docker cp $TMP/. $NAME:$NOTES
 rm -rf /tmp/rocketbook
 docker exec $NAME su -s /bin/bash -c "chown -R www-data:www-data $NOTES"
-docker exec --user www-data $NAME /var/www/html/occ files:scan manuel
+# docker exec --user www-data $NAME /var/www/html/occ files:scan manuel
+docker exec --user www-data $NAME /var/www/html/occ files:scan --path="$NOTES"
 offlineimap
