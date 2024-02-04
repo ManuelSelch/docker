@@ -1,0 +1,4 @@
+DB_PASS=db_password
+DB_ROOT_PASS=db_root_password
+URL=https://nextcloud.manuelselch.de
+NEXTCLOUD_TRUSTED_DOMAINS=100.124.161.53 nextcloud.manuelselch.de
